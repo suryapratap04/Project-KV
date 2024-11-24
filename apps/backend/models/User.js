@@ -2,12 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastName: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -17,54 +12,46 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-
     password: {
       type: String,
       required: true,
     },
     accountType: {
       type: String,
-      enum: ["Admin", "Student", "Instructor"],
+      enum: ["Admin", "Customer"],
       required: true,
-    },
-    active: {
-      type: Boolean,
-      default: true,
-    },
-    approved: {
-      type: Boolean,
-      default: true,
-    },
-    additionalDetails: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "Profile",
-    },
-    courses: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Course",
-      },
-    ],
-    token: {
-      type: String,
-    },
-    resetPasswordExpires: {
-      type: Date,
     },
     image: {
       type: String,
       required: true,
     },
-    courseProgress: [
+    cart: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "courseProgress",
+        ref: "Cart",
       },
     ],
-
+    products: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
+    boughtProducts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
+    recentOrders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Order",
+      },
+    ],
+    
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);
