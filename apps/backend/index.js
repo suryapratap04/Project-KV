@@ -8,7 +8,8 @@ const userRoutes = require("./routes/User");
 const productRoutes = require("./routes/Product");
 const orderRoutes = require("./routes/Order");
 const cartRoutes = require("./routes/Cart");
-
+const { cloudnairyconnect } = require("./config/cloudinary");
+cloudnairyconnect();
 
 app.use(cors());
 

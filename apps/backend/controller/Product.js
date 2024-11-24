@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const uploadImageToCloudinary = require("../utils/uploadImageToCloudinary");
+const uploadImageToCloudinary = require("../utils/upload");
 require("dotenv").config();
 
 
